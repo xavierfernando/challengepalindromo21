@@ -1,0 +1,22 @@
+posicoes 6577 a 6585 da expansao decimal 398989893
+398989893 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 10264 a 10272 da expansao decimal 365949563
+365949563 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 30609 a 30617 da expansao decimal 131838131
+131838131 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 61778 a 61786 da expansao decimal 166717661
+166717661 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 63017 a 63025 da expansao decimal 769646967
+769646967 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 84750 a 84758 da expansao decimal 972464279
+972464279 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 88008 a 88016 da expansao decimal 314151413
+314151413 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 102805 a 102813 da expansao decimal 992868299
+992868299 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 119364 a 119372 da expansao decimal 100353001
+100353001 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 121944 a 121952 da expansao decimal 927202729
+927202729 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 129079 a 129087 da expansao decimal 318272813
+318272813 eh o primeiro palindromo primo de 9 digitos da expansao decimal de PI
