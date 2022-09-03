@@ -128,57 +128,75 @@ testaPrimo() {
 
 }
 
+consultarApi() {
+
+  urlpi=$(printf "https://api.pi.delivery/v1/pi?start=%s&numberOfDigits=999&radix=10" ${1})
+
+  curl -s $urlpi | cut -d '"' -f 4
+
+}
+
 procuraPalindromoExpansaoDecimal() {
 
-  i=121900
-  # filename="r_palind_primos.txt"
   rm -f r_palind_primos_expansao.txt
 
-  while :; do
-    echo analisando numeral de 9 digitos das posicoes $(($i - 9)) a $(($i - 1)) da expansao decimal.
-    deslocamento=$(expr $i - 9)
+  for ((piIncremento = 1; piIncremento <= 1000000; piIncremento += 990)); do
+    echo piIncremento $piIncremento
+    expansaoDecimal=$(consultarApi $piIncremento)
+    echo decimalpura $expansaoDecimal
+    # read -p "press enter para continuar"
+    for ((umIncremento = 1; umIncremento <= 990; umIncremento++)); do
+      # echo decimal2 $expansaoDecimal
+      # echo $umIncremento
+      expansaoDecimal=${expansaoDecimal:1}
+      # echo "$umIncremento"
+      # echo decimal 3 $expansaoDecimal
+      # echo unico digito "${expansaoDecimal:0:1}"
 
-    expansaoDecimal=$(echo $(pi $i) | cut -d'.' -f 2)
+      if
+        [ "${expansaoDecimal:0:1}" -eq "1" ] ||
+          [ "${expansaoDecimal:0:1}" -eq "3" ] ||
+          [ "${expansaoDecimal:0:1}" -eq "7" ] ||
+          [ "${expansaoDecimal:0:1}" -eq "9" ]
+      then
 
-    expDecimalNoveDigitos=$(echo "${expansaoDecimal}" | cut -c "${deslocamento}"-)
-    # echo $expDecimalNoveDigitos
-    if
-      [ "${expDecimalNoveDigitos: -1}" -eq "1" ] ||
-        [ "${expDecimalNoveDigitos: -1}" -eq "3" ] ||
-        [ "${expDecimalNoveDigitos: -1}" -eq "7" ] ||
-        [ "${expDecimalNoveDigitos: -1}" -eq "9" ]
-    then
+         echo -n "impar ${expansaoDecimal::9} umincremento $umIncremento " 
 
-      if [ "${expDecimalNoveDigitos:0:1}" -eq "${expDecimalNoveDigitos:8:1}" ]; then
+        # echo zeroum "${expansaoDecimal:0:1}" oitoum "${expansaoDecimal:8:1}"
+        # echo umum "${expansaoDecimal:1:1}" seteum "${expansaoDecimal:7:1}"
+        if [ "${expansaoDecimal:0:1}" -eq "${expansaoDecimal:8:1}" ]; then
+          if [ "${expansaoDecimal:1:1}" -eq "${expansaoDecimal:7:1}" ]; then
+            if [ "${expansaoDecimal:2:1}" -eq "${expansaoDecimal:6:1}" ]; then
+              if [ "${expansaoDecimal:3:1}" -eq "${expansaoDecimal:5:1}" ]; then
+                
+                
+                echo piIncremento ${piIncremento}
+                echo umIncremento ${umIncremento}
+                testaPrimo ${expansaoDecimal::9}
+                echo $testaPrimoResult
+                if [ $testaPrimoResult -eq 1 ]; then
+                  echo "entrou no if do testa primo"
+                  echo "${expansaoDecimal::9} foi encontrado no arquivo."
+                  echo "${expansaoDecimal::9} eh o primeiro palindromo primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
+                  exit
+                fi
+                echo "passou do if testa primo"
+                echo "${expansaoDecimal::9} eh palindromo porem nao primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
+                sleep 1
 
-        if [ "${expDecimalNoveDigitos:1:1}" -eq "${expDecimalNoveDigitos:7:1}" ]; then
-          if [ "${expDecimalNoveDigitos:2:1}" -eq "${expDecimalNoveDigitos:6:1}" ]; then
-            if [ "${expDecimalNoveDigitos:3:1}" -eq "${expDecimalNoveDigitos:5:1}" ]; then
-
-              echo $expDecimalNoveDigitos eh palindromo
-              echo posicoes $(($i - 9)) a $(($i - 1)) da expansao decimal $expDecimalNoveDigitos >>r_palind_primos_expansao.txt
-
-              testaPrimo ${expDecimalNoveDigitos}
-              echo $testaPrimoResult
-              if [ $testaPrimoResult -eq 1 ]; then
-                echo "entrou no if do testa primo"
-                echo "${expDecimalNoveDigitos} foi encontrado no arquivo."
-                echo "${expDecimalNoveDigitos} eh o primeiro palindromo primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
-                exit
               fi
-              echo "passou do if testa primo"
-              echo "${expDecimalNoveDigitos} eh palindromo porem nao primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
-              sleep 1
-              echo i = $i
             fi
           fi
         fi
-      fi
-    fi
 
-    ((i++))
+      else
+        echo -n "par ${expansaoDecimal::9} umincremento $umIncremento " 
+      fi
+
+    done
     
   done
+
 }
 
 echo "range de primos iniciais a descobrir:"
@@ -191,6 +209,3 @@ read sequenciafinal
 descobrePrimosIniciais
 gerarMultiplosSelecionadosExclusivos
 procuraPalindromoExpansaoDecimal
-
-
-curl -s "https://api.pi.delivery/v1/pi?start=1&numberOfDigits=1000&radix=10" | cut -d '"' -f 4
