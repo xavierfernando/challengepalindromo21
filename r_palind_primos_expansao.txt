@@ -1,0 +1,4 @@
+posicoes 121944 a 121952 da expansao decimal 927202729
+927202729 eh palindromo porem nao primo de 9 digitos da expansao decimal de PI
+posicoes 129079 a 129087 da expansao decimal 318272813
+318272813 eh o primeiro palindromo primo de 9 digitos da expansao decimal de PI
