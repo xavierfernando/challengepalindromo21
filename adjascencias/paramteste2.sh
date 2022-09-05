@@ -25,12 +25,52 @@ func6() {
 
     numerosAcortar=3
 
-     str="price: 9832.3"
- echo "${str:7}"
+    str="price: 9832.3"
+    echo "${str:7}"
 
- echo "${str:${numerosAcortar}}"
+    echo "${str:${numerosAcortar}}"
 
-    
 }
 
-func6
+func7() {
+    rm -f teste.txt
+    #   read -p "Press Enter to contine 2"
+    # echo $r
+    r=$(echo "sqrt(999999999999999999999)" | bc)
+    declare -a arr
+    echo $r
+    # sleep 1
+    while read -r k; do
+        # echo k $k
+        # sleep 1
+        if [ $k -lt $r ]; then
+            echo $k e $r k e r
+            # sleep 1
+            # echo $k 2>&1 | tee -a ${file_r_multiplos_selecionados}
+            for ((m = 3; l < r; m += 2)); do
+                # echo m $m
+                l=$(($k * $m))
+                if [ $(expr $l % 5) -ne 0 ] && [ $l -le $r ]; then
+                #   echo l $l   
+                    arr+=($l)
+                    sleep 1 
+                #   echo $l 2>&1 | tee -a ${file_r_multiplos_selecionados}
+                fi
+                
+            done
+            l=1
+        fi
+    done <../temp_02_primos_iniciais.txt
+        for ELEMENT in ${arr[@]}; do
+            echo $ELEMENT >> teste.txt
+        done
+
+        
+
+    #   sort -g "${file_r_multiplos_selecionados}" | uniq >"${file_r_multiplos_selecionados_ordenados_exclusivos}"
+
+    #   read -p "Press Enter to contine 3"
+
+}
+
+func7

@@ -140,12 +140,14 @@ procuraPalindromoExpansaoDecimal() {
 
   rm -f r_palind_primos_expansao.txt
 
-  for ((piIncremento = 1; piIncremento <= 1000000; piIncremento += 990)); do
+  for ((piIncremento = 1; piIncremento <= 1000000000000; piIncremento += 966)); do
+    # for ((piIncremento = 1; piIncremento <= 1000000000000; piIncremento += 990)); do
     echo piIncremento $piIncremento
     expansaoDecimal=$(consultarApi $piIncremento)
     echo decimalpura $expansaoDecimal
     # read -p "press enter para continuar"
-    for ((umIncremento = 1; umIncremento <= 990; umIncremento++)); do
+    for ((umIncremento = 1; umIncremento <= 966; umIncremento++)); do
+      # for ((umIncremento = 1; umIncremento <= 990; umIncremento++)); do
       # echo decimal2 $expansaoDecimal
       # echo $umIncremento
       expansaoDecimal=${expansaoDecimal:1}
@@ -160,41 +162,52 @@ procuraPalindromoExpansaoDecimal() {
           [ "${expansaoDecimal:0:1}" -eq "9" ]
       then
 
-         echo -n "impar ${expansaoDecimal::9} umincremento $umIncremento " 
+        echo -n "impar ${expansaoDecimal::21} umincremento $umIncremento "
 
         # echo zeroum "${expansaoDecimal:0:1}" oitoum "${expansaoDecimal:8:1}"
         # echo umum "${expansaoDecimal:1:1}" seteum "${expansaoDecimal:7:1}"
-        if [ "${expansaoDecimal:0:1}" -eq "${expansaoDecimal:8:1}" ]; then
-          if [ "${expansaoDecimal:1:1}" -eq "${expansaoDecimal:7:1}" ]; then
-            if [ "${expansaoDecimal:2:1}" -eq "${expansaoDecimal:6:1}" ]; then
-              if [ "${expansaoDecimal:3:1}" -eq "${expansaoDecimal:5:1}" ]; then
-                
-                
-                echo piIncremento ${piIncremento}
-                echo umIncremento ${umIncremento}
-                testaPrimo ${expansaoDecimal::9}
-                echo $testaPrimoResult
-                if [ $testaPrimoResult -eq 1 ]; then
-                  echo "entrou no if do testa primo"
-                  echo "${expansaoDecimal::9} foi encontrado no arquivo."
-                  echo "${expansaoDecimal::9} eh o primeiro palindromo primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
-                  exit
-                fi
-                echo "passou do if testa primo"
-                echo "${expansaoDecimal::9} eh palindromo porem nao primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
-                sleep 1
+        if [ "${expansaoDecimal:0:1}" -eq "${expansaoDecimal:20:1}" ]; then
+          if [ "${expansaoDecimal:1:1}" -eq "${expansaoDecimal:19:1}" ]; then
+            if [ "${expansaoDecimal:2:1}" -eq "${expansaoDecimal:18:1}" ]; then
+              if [ "${expansaoDecimal:3:1}" -eq "${expansaoDecimal:17:1}" ]; then
+                if [ "${expansaoDecimal:4:1}" -eq "${expansaoDecimal:16:1}" ]; then
+                  if [ "${expansaoDecimal:5:1}" -eq "${expansaoDecimal:15:1}" ]; then
+                    if [ "${expansaoDecimal:6:1}" -eq "${expansaoDecimal:14:1}" ]; then
+                      if [ "${expansaoDecimal:7:1}" -eq "${expansaoDecimal:13:1}" ]; then
+                        if [ "${expansaoDecimal:8:1}" -eq "${expansaoDecimal:12:1}" ]; then
+                          if [ "${expansaoDecimal:9:1}" -eq "${expansaoDecimal:11:1}" ]; then
 
+                            echo piIncremento ${piIncremento}
+                            echo umIncremento ${umIncremento}
+                            testaPrimo ${expansaoDecimal::21}
+                            echo $testaPrimoResult
+                            if [ $testaPrimoResult -eq 1 ]; then
+                              echo "entrou no if do testa primo"
+                              echo "${expansaoDecimal::21} foi encontrado no arquivo."
+                              echo "${expansaoDecimal::21} eh o primeiro palindromo primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
+                              exit
+                            fi
+                            echo "passou do if testa primo"
+                            echo "${expansaoDecimal::21} eh palindromo porem nao primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
+                            sleep 1
+
+                          fi
+                        fi
+                      fi
+                    fi
+                  fi
+                fi
               fi
             fi
           fi
         fi
 
       else
-        echo -n "par ${expansaoDecimal::9} umincremento $umIncremento " 
+        echo -n "par ${expansaoDecimal::21} umincremento $umIncremento "
       fi
 
     done
-    
+
   done
 
 }
