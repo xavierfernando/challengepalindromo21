@@ -137,33 +137,44 @@ consultarApi() {
 }
 
 consultarArquivoOffline() {
+bloco=$((987-1))
+tamanhoPalindromo=$((21-1))
+blocoIncremento=$(("${bloco}" - "${tamanhoPalindromo}"))
+
+for ((cArqInicial=1; cArqInicial<=16679880978201 ; cArqInicial += $blocoIncremento)); do
+
+cArqFinal=$(("${cArqInicial}" + "${bloco}"))
+echo cArqInicial = $cArqInicial cArqFinal = $cArqFinal
+cat /home/vagrant/pibilhao.txt | cut -c "${cArqInicial}"-"${cArqFinal}"
+read -p "press enter"
+done
 
 
-cat pimil.txt | cut -c 1-10 | cut -c 1-3
- cat pimil.txt | cut -c 1-999 | cut -c 1-21
- cat pimil.txt | cut -c 1-999 | cut -c 2-22
- cat pimil.txt | cut -c 1-999 | cut -c 3-23
- cat pimil.txt | cut -c 1-999 | cut -c 4-24
- cat pimil.txt | cut -c 1-999 | cut -c 5-25
- cat pimil.txt | cut -c 1-999 | cut -c 6-26
- echo "..."
- cat pimil.txt | cut -c 1-999 | cut -c 945-965
- cat pimil.txt | cut -c 1-999 | cut -c 946-966
- cat pimil.txt | cut -c 1-999 | cut -c 966-986
- cat pimil.txt | cut -c 1-987 | cut -c 967-987
+# blocoDigitos=$(cat pioffline.txt | cut  -c "${cArq}"-"${blocoIncremento}" 
+# echo $blocoDigitos
+
+#  cat pimil.txt | cut -c 1-999 | cut -c 1-21
+#  cat pimil.txt | cut -c 1-999 | cut -c 2-22
+#  cat pimil.txt | cut -c 1-999 | cut -c 3-23
+#  cat pimil.txt | cut -c 1-999 | cut -c 4-24
+#  cat pimil.txt | cut -c 1-999 | cut -c 5-25
+#  cat pimil.txt | cut -c 1-999 | cut -c 6-26
+#  echo "..."
+#  cat pimil.txt | cut -c 1-999 | cut -c 945-965
+#  cat pimil.txt | cut -c 1-999 | cut -c 946-966
+#  cat pimil.txt | cut -c 1-999 | cut -c 966-986
+#  cat pimil.txt | cut -c 1-987 | cut -c 967-987
  
- echo "pega mail mil"
+#  echo "pega mail mil"
 
- cat pimil.txt | cut -c 968-1966 | cut -c 1-21
- cat pimil.txt | cut -c 967-1965 | cut -c 2-22
- echo "..."
- cat pimil.txt | cut -c 967-1965 | cut -c 945-966
+#  cat pimil.txt | cut -c 968-1966 | cut -c 1-21
+#  cat pimil.txt | cut -c 967-1965 | cut -c 2-22
+#  echo "..."
+#  cat pimil.txt | cut -c 967-1965 | cut -c 945-966
 
- echo "pega mais mil"
- cat pimil.txt | cut -c 1933-2931 | cut -c 1-21
+#  echo "pega mais mil"
+#  cat pimil.txt | cut -c 1933-2931 | cut -c 1-21
  
- 
-  
 }
 
 procuraPalindromoExpansaoDecimal() {
