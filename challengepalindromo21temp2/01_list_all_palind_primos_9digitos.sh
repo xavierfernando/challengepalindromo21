@@ -136,115 +136,56 @@ consultarApi() {
 
 }
 
-consultarArquivoOffline() {
-bloco=$((987-1))
-tamanhoPalindromo=$((21-1))
-blocoIncremento=$(("${bloco}" - "${tamanhoPalindromo}"))
+testarSePalindromo() {
 
-for ((cArqInicial=1; cArqInicial<=16679880978201 ; cArqInicial += $blocoIncremento)); do
-
-cArqFinal=$(("${cArqInicial}" + "${bloco}"))
-echo cArqInicial = $cArqInicial cArqFinal = $cArqFinal
-cat /home/vagrant/pibilhao.txt | cut -c "${cArqInicial}"-"${cArqFinal}"
-read -p "press enter"
-done
+  # echo decimalpura $expansaoDecimal
+  # read -p "press enter para continuar"
+  for ((umIncremento = 1; umIncremento <= 194460; umIncremento++)); do
+    # for ((umIncremento = 1; umIncremento <= 990; umIncremento++)); do
+    # echo decimal2 $expansaoDecimal
+    # echo umIncrementoa $umIncremento
+    # echo "      012345678901234567890 press enter"
 
 
-# blocoDigitos=$(cat pioffline.txt | cut  -c "${cArq}"-"${blocoIncremento}" 
-# echo $blocoDigitos
+    if
+      [ "${expansaoDecimal:0:1}" -eq "1" ] ||
+        [ "${expansaoDecimal:0:1}" -eq "3" ] ||
+        [ "${expansaoDecimal:0:1}" -eq "7" ] ||
+        [ "${expansaoDecimal:0:1}" -eq "9" ]
+    then
 
-#  cat pimil.txt | cut -c 1-999 | cut -c 1-21
-#  cat pimil.txt | cut -c 1-999 | cut -c 2-22
-#  cat pimil.txt | cut -c 1-999 | cut -c 3-23
-#  cat pimil.txt | cut -c 1-999 | cut -c 4-24
-#  cat pimil.txt | cut -c 1-999 | cut -c 5-25
-#  cat pimil.txt | cut -c 1-999 | cut -c 6-26
-#  echo "..."
-#  cat pimil.txt | cut -c 1-999 | cut -c 945-965
-#  cat pimil.txt | cut -c 1-999 | cut -c 946-966
-#  cat pimil.txt | cut -c 1-999 | cut -c 966-986
-#  cat pimil.txt | cut -c 1-987 | cut -c 967-987
- 
-#  echo "pega mail mil"
+      # echo -n "imparcomeca1379 ${expansaoDecimal::21} inc $umIncremento "
 
-#  cat pimil.txt | cut -c 968-1966 | cut -c 1-21
-#  cat pimil.txt | cut -c 967-1965 | cut -c 2-22
-#  echo "..."
-#  cat pimil.txt | cut -c 967-1965 | cut -c 945-966
+      # echo zeroum "${expansaoDecimal:0:1}" oitoum "${expansaoDecimal:8:1}"
+      # echo umum "${expansaoDecimal:1:1}" seteum "${expansaoDecimal:7:1}"
+      if [ "${expansaoDecimal:0:1}" -eq "${expansaoDecimal:20:1}" ]; then
+        if [ "${expansaoDecimal:1:1}" -eq "${expansaoDecimal:19:1}" ]; then
+          if [ "${expansaoDecimal:2:1}" -eq "${expansaoDecimal:18:1}" ]; then
+            if [ "${expansaoDecimal:3:1}" -eq "${expansaoDecimal:17:1}" ]; then
+              if [ "${expansaoDecimal:4:1}" -eq "${expansaoDecimal:16:1}" ]; then
+                if [ "${expansaoDecimal:5:1}" -eq "${expansaoDecimal:15:1}" ]; then
+                  if [ "${expansaoDecimal:6:1}" -eq "${expansaoDecimal:14:1}" ]; then
+                    if [ "${expansaoDecimal:7:1}" -eq "${expansaoDecimal:13:1}" ]; then
+                      if [ "${expansaoDecimal:8:1}" -eq "${expansaoDecimal:12:1}" ]; then
+                        if [ "${expansaoDecimal:9:1}" -eq "${expansaoDecimal:11:1}" ]; then
 
-#  echo "pega mais mil"
-#  cat pimil.txt | cut -c 1933-2931 | cut -c 1-21
- 
-}
-
-procuraPalindromoExpansaoDecimal() {
-
-  rm -f r_palind_primos_expansao.txt
-  rm -f r_consultarApi.txt
-  rm -f r_consultarApi2.txt
-
-
-  # 8970277
-  # 8970277
-  # 8972209
-  # 8972209
-
-  for ((piIncremento = 1; piIncremento <= 1000000000000; piIncremento += 966)); do
-    # for ((piIncremento = 1; piIncremento <= 1000000000000; piIncremento += 990)); do
-    echo piIncremento $piIncremento
-    expansaoDecimal=$(consultarApi $piIncremento)
-    # echo $expansaoDecimal >> r_consultarApi.txt
-    # echo -n $expansaoDecimal >> r_consultarApi2.txt
-    echo decimalpura $expansaoDecimal
-    # read -p "press enter para continuar"
-    for ((umIncremento = 1; umIncremento <= 966; umIncremento++)); do
-      # for ((umIncremento = 1; umIncremento <= 990; umIncremento++)); do
-      # echo decimal2 $expansaoDecimal
-      echo umIncremento $umIncremento
-      echo "      012345678901234567890 press enter"
-      # echo "$umIncremento"
-      # echo decimal 3 $expansaoDecimal
-      # echo unico digito "${expansaoDecimal:0:1}"
-
-      if
-        [ "${expansaoDecimal:0:1}" -eq "1" ] ||
-          [ "${expansaoDecimal:0:1}" -eq "3" ] ||
-          [ "${expansaoDecimal:0:1}" -eq "7" ] ||
-          [ "${expansaoDecimal:0:1}" -eq "9" ]
-      then
-
-         echo -n "impar ${expansaoDecimal::21} umincremento $umIncremento "
-
-        # echo zeroum "${expansaoDecimal:0:1}" oitoum "${expansaoDecimal:8:1}"
-        # echo umum "${expansaoDecimal:1:1}" seteum "${expansaoDecimal:7:1}"
-        if [ "${expansaoDecimal:0:1}" -eq "${expansaoDecimal:20:1}" ]; then
-          if [ "${expansaoDecimal:1:1}" -eq "${expansaoDecimal:19:1}" ]; then
-            if [ "${expansaoDecimal:2:1}" -eq "${expansaoDecimal:18:1}" ]; then
-              if [ "${expansaoDecimal:3:1}" -eq "${expansaoDecimal:17:1}" ]; then
-                if [ "${expansaoDecimal:4:1}" -eq "${expansaoDecimal:16:1}" ]; then
-                  if [ "${expansaoDecimal:5:1}" -eq "${expansaoDecimal:15:1}" ]; then
-                    if [ "${expansaoDecimal:6:1}" -eq "${expansaoDecimal:14:1}" ]; then
-                      if [ "${expansaoDecimal:7:1}" -eq "${expansaoDecimal:13:1}" ]; then
-                        if [ "${expansaoDecimal:8:1}" -eq "${expansaoDecimal:12:1}" ]; then
-                          if [ "${expansaoDecimal:9:1}" -eq "${expansaoDecimal:11:1}" ]; then
-
-                            echo "impar ${expansaoDecimal::21} umincremento $umIncremento " | tee -a r_palind_primos_expansao.txt
-                            read -p "achou palindromo... press enter para continuar"
-                            echo piIncremento ${piIncremento}
-                            echo umIncremento ${umIncremento}
-                            testaPrimo ${expansaoDecimal::21}
-                            echo $testaPrimoResult
-                            if [ $testaPrimoResult -eq 1 ]; then
-                              echo "entrou no if do testa primo"
-                              echo "${expansaoDecimal::21} foi encontrado no arquivo."
-                              echo "${expansaoDecimal::21} eh o primeiro palindromo primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
-                              exit
-                            fi
-                            echo "passou do if testa primo"
-                            echo "${expansaoDecimal::21} eh palindromo porem nao primo de 9 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
-                            sleep 1
-                            read -p "achou palindromo... press enter para continuar"
-                          fi
+                          echo "impar ${expansaoDecimal::21} umincremento $umIncremento " | tee -a r_palind_primos_expansao.txt
+                          echo "achou palindromo.." | tee -a r_palind_primos_expansao.txt 
+                          # echo piIncremento ${piIncremento}
+                          echo umIncremento ${umIncremento}
+                          # testaPrimo ${expansaoDecimal::21}
+                          # echo $testaPrimoResult
+                          # if [ $testaPrimoResult -eq 1 ]; then
+                          #   echo "entrou no if do testa primo"
+                          #   echo "${expansaoDecimal::21} foi encontrado no arquivo."
+                          #   echo "${expansaoDecimal::21} eh o primeiro palindromo primo de 21 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
+                          #   date
+                          #   exit
+                          # fi
+                          # echo "passou do if testa primo"
+                          # echo "${expansaoDecimal::21} eh palindromo porem nao primo de 21 digitos da expansao decimal de PI" | tee -a r_palind_primos_expansao.txt
+                          # sleep 1
+                          # # read -p "achou palindromo... press enter para continuar"
                         fi
                       fi
                     fi
@@ -254,16 +195,49 @@ procuraPalindromoExpansaoDecimal() {
             fi
           fi
         fi
-
-      else
-         echo -n "par   ${expansaoDecimal::21} umincremento $umIncremento "
       fi
-      expansaoDecimal=${expansaoDecimal:1}
-      read -p ""
 
-    done
+    # else
+    #   echo -n "${expansaoDecimal::21} ignorar $umIncremento "
+    fi
+    expansaoDecimal=${expansaoDecimal:1}
+    # read -p ""
 
   done
+
+}
+
+consultarArquivoOffline() {
+  # rm -f teste21.txt
+  
+  # bloco=$((987-1))
+  bloco=$((194481 - 1))
+  tamanhoPalindromo=$((21 - 1))
+  blocoIncremento=$(("${bloco}" - "${tamanhoPalindromo}"))
+
+  for ((cArqInicial = 3; cArqInicial <= 16679880978203; cArqInicial += $blocoIncremento)); do
+    echo cArqInicial $cArqInicial
+    cArqFinal=$(("${cArqInicial}" + "${bloco}"))
+    # echo cArqInicial = $cArqInicial cArqFinal = $cArqFinal >>teste21.txt
+    # echo 123456789012345678901 >>teste21.txt
+    expansaoDecimal=$(cat /home/vagrant/pibilhao.txt | cut -c "${cArqInicial}"-"${cArqFinal}")
+    # echo $expansaoDecimal >> teste21.txt
+    # echo procurar >>teste21.txt
+    testarSePalindromo
+    # read -p "press enter"
+  done
+
+  
+date 
+}
+
+procuraPalindromoExpansaoDecimal() {
+
+  rm -f r_palind_primos_expansao.txt
+  rm -f r_consultarApi.txt
+  rm -f r_consultarApi2.txt
+
+  consultarArquivoOffline
 
 }
 
@@ -276,5 +250,5 @@ sequenciafinal=999999999999999999999
 
 # descobrePrimosIniciais
 # gerarMultiplosSelecionadosExclusivos
-# procuraPalindromoExpansaoDecimal
-consultarArquivoOffline
+procuraPalindromoExpansaoDecimal
+# consultarArquivoOffline
